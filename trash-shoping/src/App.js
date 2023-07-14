@@ -11,22 +11,17 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   const [products, setProducts] = useState([])
-  const [bookmark, setBookmark] = useState([])
   const [dropDownValid, setDropDownValid] = useState(false);
   const DropDownHandler = () => {
     setDropDownValid(!dropDownValid);
   };
-  async function getData() {
-    await fetch('http://cozshopping.codestates-seb.link/api/v1/products')
+  
+  useEffect(() => {
+     fetch('http://cozshopping.codestates-seb.link/api/v1/products')
       .then((res) => { return res.json() })
-      .then((data) => { setProducts([...data]) })
-  };
-  useEffect(() => {
-    getData()
-  },[])
-  useEffect(() => {
-        console.log(products);
-  },[products])
+      .then((data) => { setProducts(data.map((el) => ({ ...el, bookmarked: false }))); })
+  }, []);
+
 
   return (
     <BrowserRouter>
@@ -39,8 +34,9 @@ function App() {
       ) : (
         <></>
       )}
+
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MainPage products={products} />} />
         <Route path="/product/list" element={<PruductPage />} />
         <Route path="/bookmark" element={<BookmarkList />} />
       </Routes>
