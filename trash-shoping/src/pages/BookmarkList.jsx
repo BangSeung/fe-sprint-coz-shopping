@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import Navigation from "../components/Navigation";
 import Item from "../components/Item";
 import Footer from "../components/Footer";
@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 export default function BookmarkList({ products, bookmarkHandler, modalhandler }) {
   const [category, setCategory] = useState("All");
   const [itemNumbs, setItemNumbs] = useState(1);
+  const bottom = useRef(null);
 
   useEffect(() => {
     setCategory("All");
@@ -13,7 +14,29 @@ export default function BookmarkList({ products, bookmarkHandler, modalhandler }
   }, []);
   useEffect(() => {
     setItemNumbs(1)
-  },[category])
+  }, [category])
+
+  const renderNextPage = useCallback(() => {
+    if (itemNumbs < 10) {
+      setItemNumbs(itemNumbs + 1);
+    }
+  }, [itemNumbs, products]);
+   useEffect(() => {
+     if (bottom.current) {
+       const observer = new IntersectionObserver(
+         (entries) => {
+           if (entries[0].isIntersecting) {
+             renderNextPage();
+           }
+         },
+         {
+           threshold: 1,
+         }
+       );
+       observer.observe(bottom.current);
+       return () => observer.disconnect();
+     }
+   }, [renderNextPage]);
 
   return (
     <section className="page-body">
@@ -46,6 +69,7 @@ export default function BookmarkList({ products, bookmarkHandler, modalhandler }
           </div>
         )}
       </div>
+      <div ref={bottom}></div>
       <Footer />
     </section>
   );
