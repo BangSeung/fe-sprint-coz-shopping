@@ -140,7 +140,7 @@ a{
 }
 .bookmark-button{
   background-color:transparent;
-  background-image: url(../public/Property\ 1=off.svg);
+  background-image: url(../public/bookmarkoff.svg);
   background-repeat:no-repeat ;
   background-size: cover;
   width: 24px;
@@ -152,7 +152,7 @@ a{
   border: none;
 }
 .checked-bookmarkbutton{
-  background-image: url(../public/Property\ 1=on.svg)
+  background-image: url(../public/bookmarkon.svg)
 }
 .product-text-container{
   flex-flow: 1 0;
@@ -283,7 +283,7 @@ a{
 }
 .modal-bookmark-button{
   background-color:transparent;
-  background-image: url(../public/Property\ 1=off.svg);
+  background-image: url(../public/bookmarkoff.svg);
   background-repeat:no-repeat ;
   background-size: cover;
   width: 24px;
@@ -292,7 +292,7 @@ a{
   border: none;
 }
 .modal-checked-bookmarkbutton{
-  background-image: url(../public/Property\ 1=on.svg)
+  background-image: url(../public/bookmarkon.svg)
 }
 .modal-close-button{
   background-image: url(../public/closebutton.png);
