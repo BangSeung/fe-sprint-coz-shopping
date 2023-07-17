@@ -22,6 +22,10 @@ function App() {
       .then((data) => { setProducts(data.map((el) => ({ ...el, bookmarked: false }))); })
   }, []);
 
+  const bookmarkHandler = (product) => {
+    setProducts(products.map((el)=>el.id===product.id?{...el,bookmarked:!el.bookmarked}:el))
+  }
+
 
   return (
     <BrowserRouter>
@@ -36,9 +40,30 @@ function App() {
       )}
 
       <Routes>
-        <Route path="/" element={<MainPage products={products} />} />
-        <Route path="/product/list" element={<PruductPage />} />
-        <Route path="/bookmark" element={<BookmarkList />} />
+        <Route
+          path="/"
+          element={
+            <MainPage products={products} bookmarkHandler={bookmarkHandler} />
+          }
+        />
+        <Route
+          path="/product/list"
+          element={
+            <PruductPage
+              products={products}
+              bookmarkHandler={bookmarkHandler}
+            />
+          }
+        />
+        <Route
+          path="/bookmark"
+          element={
+            <BookmarkList
+              products={products}
+              bookmarkHandler={bookmarkHandler}
+            />
+          }
+        />
       </Routes>
     </BrowserRouter>
   );

@@ -151,6 +151,9 @@ a{
   bottom: 12px;
   border: none;
 }
+.checked-bookmarkbutton{
+  background-image: url(../public/Property\ 1=on.svg)
+}
 .product-text-container{
   flex-flow: 1 0;
   height: 48px;
@@ -198,3 +201,53 @@ a{
   text-align: center;
 }
 /* MainPage 끝*/
+
+/* Navigation 시작 */
+.navigation-container{
+  display: flex;
+  width: 554px;
+  gap: 36px;
+}
+.navigation-button{
+  height: 110px;
+  width: 82px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  gap: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.category-now{
+  cursor: default;
+  color: darkblue;
+  text-decoration: underline;
+}
+/* Navigation 끝 */
+/* ProductPage&BokkmarkList 시작 */
+.page-body{
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+.page-items{
+  display: flex;
+  flex-wrap: wrap;
+  width: 1128px;
+  gap: 24px;
+  min-height: 520px;
+}
+.none-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1128px;
+}
+.bookmarklist-none{
+  font-size: 32px;
+
+}
+/* ProductPage&BokkmarkList 끝 */
