@@ -3,7 +3,7 @@ import Navigation from "../components/Navigation";
 import Item from "../components/Item";
 import Footer from "../components/Footer";
 
-export default function PruductPage({ products, bookmarkHandler }) {
+export default function PruductPage({ products, bookmarkHandler, modalhandler }) {
   const [category, setCategory] = useState("All");
   const [itemNumbs, setItemNumbs] = useState(1);
 
@@ -24,6 +24,7 @@ export default function PruductPage({ products, bookmarkHandler }) {
                 key={product.id}
                 product={product}
                 bookmarkHandler={bookmarkHandler}
+                modalhandler={modalhandler}
               />
             );
           })}

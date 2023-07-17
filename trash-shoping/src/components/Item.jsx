@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Item({ product, bookmarkHandler }) {
+export default function Item({ product, bookmarkHandler, modalhandler }) {
   const {
     title,
     brand_image_url,
@@ -19,6 +19,7 @@ export default function Item({ product, bookmarkHandler }) {
         <img
           className="product-image"
           src={`${image_url ? image_url : brand_image_url}`}
+          onClick={() => modalhandler(product)}
         />
         <input
           className={`bookmark-button ${
