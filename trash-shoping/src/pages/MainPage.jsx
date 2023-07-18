@@ -2,7 +2,7 @@ import React from "react";
 import Footer from "../components/Footer";
 import Item from "../components/Item";
 
-export default function MainPage({ products, bookmarkHandler }) {
+export default function MainPage({ products, bookmarkHandler, modalhandler }) {
   return (
     <>
       <div className="mainpage-body">
@@ -17,6 +17,7 @@ export default function MainPage({ products, bookmarkHandler }) {
                   key={product.id}
                   product={product}
                   bookmarkHandler={bookmarkHandler}
+                  modalhandler={modalhandler}
                 />
               ))}
           </div>
@@ -33,6 +34,7 @@ export default function MainPage({ products, bookmarkHandler }) {
                     key={product.id}
                     product={product}
                     bookmarkHandler={bookmarkHandler}
+                    modalhandler={modalhandler}
                   />
                 ))
             ) : (
